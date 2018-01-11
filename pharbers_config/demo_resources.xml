@@ -1,0 +1,6 @@
+<pharbers-modules>
+    <dongda-resources>
+        <origin-path value="resources/images/" />
+        <images-path value="images/" />
+    </dongda-resources>
+</pharbers-modules>
