@@ -37,6 +37,8 @@ trait bmServiceData {
             "teacher_num" -> map.get("老师数量").map(x => if (x == "") -1 else x.toInt.asInstanceOf[Number]).getOrElse((-1).asInstanceOf[Number]),
             "punchline" -> map.get("一句话吸睛").getOrElse(""),
             "description" -> map.get("描述").getOrElse(""),
+            "album" -> map.get("首页专题").getOrElse(""),
+            "scores" -> map.get("首页分类").getOrElse("").toInt,
 //            "service_images" -> map.get("服务图片").getOrElse("")
             "date" -> new Date().getTime
         )

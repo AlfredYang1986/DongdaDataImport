@@ -24,6 +24,21 @@ trait bmLocationData {
         )
     }
 
+    implicit val m2d2 : Map[String, Any] => DBObject = { map =>
+        val ftmp = map.get("场地友好性").getOrElse("").toString.split(";")
+        val pin = map.get("pin").map (x => x).getOrElse("")
+
+        val _id = ObjectId.get()
+        DBObject(
+            "_id" -> _id,
+            "address" -> map.get("场地位置").getOrElse(""),
+            "friendliness" -> ftmp, // map.get("场地友好性").getOrElse(""),
+            "pin" -> pin,
+            "date" -> new Date().getTime
+            //            "location_images" -> map.get("场地图片").getOrElse("")
+        )
+    }
+
     implicit val d2m : DBObject => Map[String, JsValue] = { obj =>
         Map(
             "_id" -> toJson(obj.getAs[ObjectId]("_id").get.toString),

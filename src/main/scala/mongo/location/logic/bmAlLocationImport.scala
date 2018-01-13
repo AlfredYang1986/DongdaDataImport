@@ -3,6 +3,7 @@ package mongo.location.logic
 import com.mongodb.casbah.Imports._
 import mongo.bmMongoDriver
 import mongo.location.bmLocationData
+import mongo.pin.logic.pin
 import play.api.libs.json.JsValue
 
 object bmAlLocationImport extends bmLocationData {
@@ -12,9 +13,27 @@ object bmAlLocationImport extends bmLocationData {
       *    只需要简单的额修改就能Location
       *    后期只需要将类似的提出来，形成结构化的代码
       */
-    def insertLocation(map : Map[String, String]) : Option[BMLocation] = {
-        if (isNewLocation(map))
-            bmMongoDriver.insertObject(map, "locations", "_id")
+    def insertLocation(map : Map[String, String], pins : Seq[pin]) : Option[BMLocation] = {
+        if (isNewLocation(map)) {
+//            val o : DBObject = map
+
+            val ad = map.get("场地位置").getOrElse("")
+            val o : DBObject =
+            pins.find(p => p.s == ad).map { pin =>
+                val builder = MongoDBObject.newBuilder
+                builder += "type" -> "Point"
+
+                val lb = MongoDBList.newBuilder
+                lb += pin.log
+                lb += pin.lat
+
+                builder += "coordinates" -> lb.result
+
+                m2d2(map + ("pin" -> builder.result))
+            }.getOrElse(m2d(map))
+
+            bmMongoDriver.insertObject(o, "locations", "_id")
+        }
 
         lastPushLoaction
     }
