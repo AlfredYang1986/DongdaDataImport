@@ -1,6 +1,6 @@
-package v1.data
+package data
 
-import v1.data.excel.bmAlExcelModule
+import data.excel.bmAlExcelModule
 
 /**
   * Created by jeorch on 17-12-16.

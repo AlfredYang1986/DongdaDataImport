@@ -1,8 +1,8 @@
-package entry
+package v1.entry
 
-import v1.data.bmAlDataModule
-import v1.data.image.bmAlImageModule
-import v1.data.image.bmImageTypes._
+import data.bmAlDataModule
+import data.image.bmAlImageModule
+import data.image.bmImageTypes._
 import v1.mongo.brand.logic.bmAlBrandImport
 import v1.mongo.location.logic.bmAlLocationImport
 import v1.mongo.pin.logic.bmAlPinImport

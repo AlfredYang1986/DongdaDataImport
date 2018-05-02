@@ -1,4 +1,4 @@
-package v1.data.excel
+package data.excel
 
 import java.io.FileInputStream
 import jxl.{Workbook, WorkbookSettings}

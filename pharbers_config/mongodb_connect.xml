@@ -4,7 +4,7 @@
         <server_port value="27017" />
         <connect_name value="" />
         <connect_pwd value="" />
-        <!--<conn_name value="jeorch_demo" />-->
-        <conn_name value="baby" />
+        <conn_name value="alfredDemo" />
+        <!--<conn_name value="baby" />-->
     </mongodb-connect>
 </pharbers-modules>

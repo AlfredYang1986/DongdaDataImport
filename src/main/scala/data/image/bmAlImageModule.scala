@@ -1,4 +1,4 @@
-package v1.data.image
+package data.image
 
 import java.io.{File, FileInputStream, FileOutputStream}
 import java.util.UUID
